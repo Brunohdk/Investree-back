@@ -7,6 +7,37 @@ router.route('/').get((req, res) => {
         .catch(err => res.status(400).json(`Error: ${err}`))
 })
 
+router.route('/:id').get((req, res) => {
+    DataTable.findById(req.params.id)
+        .then(dataTable => res.json(dataTable))
+        .catch(err => res.status(400).json(`Error: ${err}`))
+})
+
+router.route('/:id').delete((req, res) => {
+    DataTable.findByIdAndDelete(req.params.id)
+        .then(dataTable => res.json(dataTable))
+        .catch(err => res.status(400).json(`Error: ${err}`))
+})
+
+router.route('/:id').put((req, res) => {
+    DataTable.findById(req.params.id)
+        .then(dataTable => {
+            const { asset, amount, value, date, status } = req.body
+
+            dataTable.asset = asset
+            dataTable.amount = amount
+            dataTable.value = value
+            dataTable.date = date
+            dataTable.status = status
+            dataTable.createdAt = dataTable.createdAt
+
+            dataTable.save()
+                .then(() => res.json('Data updated!'))
+                .catch(err => res.status(400).json(`Error: ${err}`))
+        })
+        .catch(err => res.status(400).json(`Error: ${err}`))
+})
+
 router.route('/').post((req, res) => {
     const { asset, amount, value, date, createdAt, status } = req.body
 

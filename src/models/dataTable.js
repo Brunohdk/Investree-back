@@ -4,7 +4,6 @@ const mongoosePaginate = require('mongoose-paginate')
 let schema = new mongoose.Schema({
     asset: {
         type: String,
-        unique: true,
         required: true,
         uppercase: true
     },
@@ -14,7 +13,7 @@ let schema = new mongoose.Schema({
         lowercase: true
     },
     value: {
-        type: Number,
+        type: String,
         required: true,
     },
     date: {
