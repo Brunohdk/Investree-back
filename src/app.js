@@ -8,6 +8,7 @@ require('dotenv').config();
 const port = process.env.PORT || 9001;
 const userRoute = require('./controllers/user')
 const dataTableRoute = require('./controllers/dataTable')
+const assetRoute = require('./controllers/asset')
 
 app.use(cors());
 app.use(express.json());
@@ -25,7 +26,8 @@ connection.once('open', () => {
 })
 
 app.use('/user', userRoute)
-app.use('/asset', dataTableRoute)
+app.use('/operation', dataTableRoute)
+app.use('/asset', assetRoute)
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`)
