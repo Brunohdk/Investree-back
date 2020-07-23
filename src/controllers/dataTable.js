@@ -24,6 +24,8 @@ router.route('/:id').put((req, res) => {
         .then(dataTable => {
             const { asset, amount, value, date, status, saw } = req.body
 
+            console.log(saw)
+
             dataTable.asset = asset
             dataTable.amount = amount
             dataTable.value = value

@@ -22,6 +22,6 @@ let schema = new mongoose.Schema({
 
 schema.plugin(mongoosePaginate)
 
-const Assets = mongoose.model('Assets', schema);
+const Asset = mongoose.model('Asset', schema);
 
-module.exports = Assets;
+module.exports = Asset;

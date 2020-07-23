@@ -1,9 +1,13 @@
 const router = require('express').Router();
-const Asset = require('../models/assets');
+const Asset = require('../models/asset');
 
 router.route('/').get((req, res) => {
-    DataTable.find()
-        .then(asset => res.json(asset))
+    Asset.find()
+        .then(asset => {
+            asset.sort((a, b) => (a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0)
+
+            res.json(asset)
+        })
         .catch(err => res.status(400).json(`Error: ${err}`))
 })
 
