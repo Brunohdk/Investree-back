@@ -22,13 +22,16 @@ router.route('/:id').delete((req, res) => {
 router.route('/:id').put((req, res) => {
     DataTable.findById(req.params.id)
         .then(dataTable => {
-            const { asset, amount, value, date, status } = req.body
+            const { asset, amount, value, date, status, saw } = req.body
+
+            console.log(saw)
 
             dataTable.asset = asset
             dataTable.amount = amount
             dataTable.value = value
             dataTable.date = date
             dataTable.status = status
+            dataTable.saw = saw
             dataTable.createdAt = dataTable.createdAt
 
             dataTable.save()

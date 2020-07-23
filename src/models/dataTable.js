@@ -10,7 +10,6 @@ let schema = new mongoose.Schema({
     amount: {
         type: Number,
         required: true,
-        lowercase: true
     },
     value: {
         type: String,
@@ -21,6 +20,23 @@ let schema = new mongoose.Schema({
         required: true,
         select: false
     },
+    saw: [
+        {
+            amount: {
+                type: Number,
+                required: true,
+            },
+            value: {
+                type: String,
+                required: true,
+            },
+            date: {
+                type: String,
+                required: true,
+                select: false
+            },
+        }
+    ],
     createdAt: {
         type: Date,
         default: Date.now

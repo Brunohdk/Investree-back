@@ -9,7 +9,6 @@ router.route('/').get((req, res) => {
 
 router.route('/').post((req, res) => {
     const { username, email } = req.body
-    console.log(req.body)
 
     User.findOne({ username, email })
         .then(oldUser => {
