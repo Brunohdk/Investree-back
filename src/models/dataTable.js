@@ -16,9 +16,8 @@ let schema = new mongoose.Schema({
         required: true,
     },
     date: {
-        type: String,
-        required: true,
-        select: false
+        type: Date,
+        required: true
     },
     saw: [
         {
@@ -41,7 +40,7 @@ let schema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    satus: {
+    status: {
         type: Number,
         default: 10
     }

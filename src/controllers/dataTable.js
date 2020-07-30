@@ -42,15 +42,13 @@ router.route('/:id').put((req, res) => {
 })
 
 router.route('/').post((req, res) => {
-    const { asset, amount, value, date, createdAt, status } = req.body
-
+    const { asset, amount, value, date } = req.body
+    
     const newDataTable = new DataTable({
         asset, 
         amount,
         value, 
-        date, 
-        createdAt, 
-        status
+        date
     })
 
     newDataTable.save()
