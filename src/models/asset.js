@@ -11,7 +11,7 @@ let schema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    satus: {
+    status: {
         type: Number,
         default: 10
     }

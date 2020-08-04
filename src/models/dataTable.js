@@ -7,26 +7,42 @@ let schema = new mongoose.Schema({
         required: true,
         uppercase: true
     },
-    amount: {
+    amountTotal: {
         type: Number,
         required: true,
     },
-    value: {
-        type: String,
+    valueAverage: {
+        type: Number,
         required: true,
     },
-    date: {
+    startedPositionIn: {
         type: Date,
         required: true
     },
-    saw: [
+    bought: [
         {
             amount: {
                 type: Number,
                 required: true,
             },
             value: {
-                type: String,
+                type: Number,
+                required: true,
+            },
+            date: {
+                type: Date,
+                required: true
+            }
+        }
+    ],
+    sold: [
+        {
+            amount: {
+                type: Number,
+                required: true,
+            },
+            value: {
+                type: Number,
                 required: true,
             },
             date: {

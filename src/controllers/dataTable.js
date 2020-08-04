@@ -22,16 +22,12 @@ router.route('/:id').delete((req, res) => {
 router.route('/:id').put((req, res) => {
     DataTable.findById(req.params.id)
         .then(dataTable => {
-            const { asset, amount, value, date, status, saw } = req.body
-
-            console.log(saw)
+            const { asset, bought, sold } = req.body
 
             dataTable.asset = asset
-            dataTable.amount = amount
-            dataTable.value = value
-            dataTable.date = date
+            dataTable.bought = bought
+            dataTable.sold = sold
             dataTable.status = status
-            dataTable.saw = saw
             dataTable.createdAt = dataTable.createdAt
 
             dataTable.save()
@@ -42,13 +38,26 @@ router.route('/:id').put((req, res) => {
 })
 
 router.route('/').post((req, res) => {
-    const { asset, amount, value, date } = req.body
+    const { asset, bought } = req.body
+
+    let amountTotal = 0
+    let valueAverage = 0
+    startedPositionIn = null
     
+    bought.forEach(item => {
+        amountTotal += item.amount
+        valueAverage += item.value
+    })
+
+    valueAverage = valueAverage / bought.length
+    startedPositionIn = bought[0].date
+
     const newDataTable = new DataTable({
         asset, 
-        amount,
-        value, 
-        date
+        amountTotal,
+        valueAverage,
+        startedPositionIn,
+        bought
     })
 
     newDataTable.save()
