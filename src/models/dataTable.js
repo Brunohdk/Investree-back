@@ -15,7 +15,7 @@ let schema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    startedPositionIn: {
+    startedPositionAt: {
         type: Date,
         required: true
     },
